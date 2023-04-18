@@ -127,7 +127,11 @@
 		</ComponentGroup>
 		<ComponentGroup Directory="QTStylesDir" Id="ProductQtStylesComponents">
 			<Component Guid="96E0F8D8-64FD-4CE8-94D1-F6EDCBBB4995" Id="Styles">
-				<File Id="qwindowsvistastyle" Source="$(var.BinPath)\styles\qwindowsvistastyled.dll"/>
+				<?if $(var.Configuration) = "Debug" ?>
+					<File Id="qwindowsvistastyle" Source="$(var.BinPath)\styles\qwindowsvistastyled.dll"/>
+				<?else ?>
+					<File Id="qwindowsvistastyle" Source="$(var.BinPath)\styles\qwindowsvistastyle.dll"/>
+				<?endif ?>
 			</Component>
 		</ComponentGroup>
 		<ComponentGroup Directory="PlatformsDir" Id="ProductQtPluginComponents">
