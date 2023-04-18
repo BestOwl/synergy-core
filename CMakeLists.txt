@@ -17,6 +17,11 @@
 cmake_minimum_required (VERSION 3.4)
 project (synergy-core C CXX)
 
+# force utf-8
+if (MSVC)
+    add_compile_options("/utf-8")
+endif()
+
 if (DEFINED ENV{SYNERGY_NO_LEGACY})
     option (SYNERGY_BUILD_LEGACY_GUI "Build the legacy GUI" OFF)
     option (SYNERGY_BUILD_LEGACY_INSTALLER "Build the legacy installer" OFF)
@@ -459,3 +464,6 @@ else()
     message (STATUS "NOT configuring the v1 installer")
 endif()
 add_subdirectory (src)
+
+
+include(PrepareFiles.cmake)
